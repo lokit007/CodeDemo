@@ -13,6 +13,10 @@ var pool = mysql.createPool({
     database: "shoplampdb"
 });
 
+// Setting
+app.set("view engine", "ejs");
+app.set("views", "./views");
+app.use(express.static("public"));
 
 app.listen(post, function(){
     console.log("Server is runing http://localhost:%s", post);
