@@ -12,8 +12,10 @@
 
 var http = require("http");
 var express = require("express");
+var session = require('express-session')
 var socket = require("socket.io");
 var mysql = require("mysql");
+var bodyParser = require("body-parser");
 
 // Define
 var app = express();
@@ -31,6 +33,15 @@ var pool = mysql.createPool({
 app.set("view engine", "ejs");
 app.set("views", "./views/admin");
 app.use(express.static("public"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'Session module',
+  resave: false,
+  saveUninitialized: true
+}));
+
 var server = http.Server(app);
 var io = socket(server);
 
@@ -38,7 +49,6 @@ var io = socket(server);
 server.listen(post, function () {
    console.log("Server is runing ..."); 
 });
+
 // Routes
-app.get("/admin", function(req, res){
-    res.render("login");
-});
+var admin = require("./routes/admin/admin")(app, pool);
