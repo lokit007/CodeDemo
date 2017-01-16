@@ -8,7 +8,7 @@ var login = function(app, pool) {
         }
     });
     // Login
-    app.post('/login', function(req, res){
+    app.post('/admin/login', function(req, res){
         var sql = "SELECT * FROM `user` WHERE UserName='"+req.body.username+"' AND PassWord='"+req.body.password+"'"; // Thực hiện câu truy vấn và show dữ liệu
         pool.getConnection(function(err, connection) {
             connection.query(sql, function (error, results, fields) {
@@ -16,8 +16,7 @@ var login = function(app, pool) {
                 if (error) throw error;
                 else if (results.length>0) {
                     req.session.login = "true";
-                    req.session.mes = "";
-                    res.redirect("/admin");
+                    req.session.mes = "";                        res.redirect("/admin");
                 } else {
                     req.session.login = "false";
                     req.session.mes = "Tên đăng nhập hoặc mật khẩu không chính xác !!!";
@@ -27,10 +26,10 @@ var login = function(app, pool) {
         });
     });
     // Logout
-    app.get('/logout', function(req, res){
+    app.get('/admin/logout', function(req, res){
         req.session.login = "false";
         req.session.mes = "";
-        res.redirect("/admin");
+        res.redirect("./admin");
     });
 }
 

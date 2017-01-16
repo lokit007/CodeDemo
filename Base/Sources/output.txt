@@ -1,3 +1,0 @@
-du lieu cuDữ liệu input
-Chào bạn đến với NodeJs NhanViet
-Chúc bạn thành công
