@@ -7,13 +7,54 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Admin - Home</title>
-        <meta name="description" content="">
+         <!-- set icon web page -->
+        <link rel="icon" type="image/x-icon" href="../images/admin-icon.ico" >
+        <meta name="description" content="Shop Lamp">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/adminstyle.css" rel="stylesheet" />
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jquery-3.1.1.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+                $("#btn-show-menu").click(function(){
+                    if ($("#sub-memu").attr("style") == undefined) {
+                        $("#sub-memu").hide(200);
+                        $("#btn-show-menu").attr("class", "fa fa-bars");
+                    } else {
+                        $("#sub-memu").show(100);
+                        $("#btn-show-menu").attr("class", "fa fa-bars fa-rotate-90");
+                    }
+                });
+            });
+        </script>
+
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1>Trang chu</h1>
+        <div id="menu">
+            <div> Menu <i id="btn-show-menu" class="fa fa-bars" aria-hidden="true"></i></div>
+            <ul id="sub-memu" style="display: none;">
+                <li><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Strar 1</li>
+                <li><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Strar 2</li>
+                <li><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Strar 3</li>
+                <li><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Strar 4</li>
+                <li><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Strar 5</li>
+            </ul>
+        </div>
+        <div id="content">
+            Nội dung chinh
+        </div>
+        <h1>Trang chu - Info Admin is login</h1><hr>
+        <% if (session) { %>
+                <h3> <%= session.UserName %> </h3>
+                <h3> <%= session.PhoneNumber %> </h3>
+                <h3> <%= session.LongName %> </h3>
+                <h3> <%= session.Email %> </h3>
+        <% } %>
     </body>
 </html>

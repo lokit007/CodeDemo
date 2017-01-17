@@ -22,3 +22,34 @@ a:hover {
     padding: 10px 5px;
     margin-bottom: 10px;
 }
+
+/* Menu */
+ul {
+    list-style: none;
+    padding: 0px;
+}
+/* Man hinh dien thoai */
+@media all and (max-width: 599px) {
+    li {
+        border-bottom: 1px solid #ccc;
+        height: 30px;
+        padding: 5px;
+    }
+    #menu div {
+        border-bottom: 1px solid #ccc;
+        height: 30px;
+        padding: 5px;
+    }
+    i.fa-bars {
+        float: right;
+        padding: 3px 7px;
+    }
+}
+/* Man hinh IPad */
+@media all and (min-width: 600px) and (max-width: 1023px) {
+
+}
+/* Man hinh lap top */
+@media all and (min-width: 1024px) {
+
+}

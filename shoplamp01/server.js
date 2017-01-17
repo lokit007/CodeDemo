@@ -25,7 +25,8 @@ var pool = mysql.createPool({
     connectTimeout: 5000,
     host: "localhost",
     user: "root",
-    password: "12345678",
+    //password: "12345678",
+    password: null,
     database: "shoplampdb"
 });
 
@@ -52,4 +53,3 @@ server.listen(post, function () {
 
 // Routes
 var admin = require("./routes/admin/admin")(app, pool);
-//app.use("/admin", require("./routes/admin/admin")(app, pool));

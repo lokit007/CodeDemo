@@ -2,7 +2,7 @@ var login = function(app, pool) {
     // Truy cap page admin
     app.get('/admin', function(req, res){
         if(req.session.login === "true") {
-            res.render("home");
+            res.render("home", { 'session': req.session.admin});
         } else {
             res.render("login", {"meserr": req.session.mes });
         }
@@ -16,7 +16,9 @@ var login = function(app, pool) {
                 if (error) throw error;
                 else if (results.length>0) {
                     req.session.login = "true";
-                    req.session.mes = "";                        res.redirect("/admin");
+                    req.session.admin = results[0];
+                    req.session.mes = "";
+                    res.redirect("/admin");
                 } else {
                     req.session.login = "false";
                     req.session.mes = "Tên đăng nhập hoặc mật khẩu không chính xác !!!";
@@ -28,8 +30,9 @@ var login = function(app, pool) {
     // Logout
     app.get('/admin/logout', function(req, res){
         req.session.login = "false";
+        req.session.admin = null;
         req.session.mes = "";
-        res.redirect("./admin");
+        res.redirect("/admin");
     });
 }
 
