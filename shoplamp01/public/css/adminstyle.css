@@ -22,11 +22,19 @@ a:hover {
     padding: 10px 5px;
     margin-bottom: 10px;
 }
-
+h1, h2, h3 {
+    margin: 0px;
+}
+hr {
+    margin: 10px 5px 10px 0px;
+}
 /* Menu */
 ul {
     list-style: none;
     padding: 0px;
+}
+ul#sub-memu li span {
+    margin-right: 10px;
 }
 /* Man hinh dien thoai */
 @media all and (max-width: 599px) {
@@ -51,5 +59,46 @@ ul {
 }
 /* Man hinh lap top */
 @media all and (min-width: 1024px) {
+    div#menu {
+        width: 20%;
+        position: absolute;
+        height: 100%;
+        border-right: 1px solid gray;
+    }
+    div#content {
+        margin-left: 20%;
+        padding-left: 5px;
+    }
+    ul#sub-memu {
+        display: inherit !important;
+    }
+    div#menu:before {
+        content: "Quản trị Lamp";
+        font-weight: 700;
+        font-size: 1.5em;
+        display: block;
+        border-bottom: 2px dashed rgba(128, 128, 128, 0.48);
+        text-align: center;
+    }
+    div#menu div {
+        display: none;
+    }
+    ul#sub-memu li {
+        height: 35px;
+        padding: 7px;
+        cursor: pointer;
+        font-size: 1.15em;
+        transition: all 0.3s;
+    }
+    ul#sub-memu li:hover {
+        background-color: blueviolet;
+        color: white;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+    li.active {
+        background: rgba(128, 128, 128, 0.13);
+        font-weight: 700;
+    }
 
 }
