@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Admin - Category</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- set icon web page -->
+        <link rel="icon" type="image/x-icon" href="../images/admin-icon.ico" >
+        <meta name="description" content="Shop Lamp">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/adminstyle.css" rel="stylesheet" />
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jquery-3.1.1.min.js"></script>
+        <script src="../js/admin.js"></script>
+    </head>
+    <body> 
+        <% include template/_menu %>
+        <div id="content">
+            <h1>Danh mục hàng hiện tại</h1>
+            <form id="f-update" action="/admin/category/update" method="POST" style="display: none;">
+                <i id="ic-close" class="fa fa-times fa-2x" aria-hidden="true"></i>
+                <input type="hidden" id="id" name="id" value="-1">
+                <label for="name">Danh mục</label>
+                <input type="text" id="name" class="form-control" name="name" placeholder="Tên danh mục">
+                <br><label for="depiction">Mô tả</label>
+                <textarea id="depiction" class="form-control" name="depiction" placeholder="Mô tả danh mục"></textarea>
+                <br><input type="checkbox" id="show" name="show" checked> Hiển thị
+                <input type="submit" value="Cập nhật" class="btn btn-default" style="float: right;">
+            </form>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Danh mục</th>
+                            <th>Ngày tạo</th>
+                            <th>Mô tả</th>
+                            <th style="cursor: pointer;" id="ic-show"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm danh mục</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(data.length > 0) { %>
+                            <% for (i=0; i<data.length; i++) { %>
+                                <tr>
+                                <td><%= data[i].Name %></td>
+                                <td><%= data[i].DateCreate %></td>
+                                <td><%= data[i].Depiction %></td>
+                                <td class="action">
+                                    <i class="fa fa-toggle-off" aria-hidden="true" onclick="showcategory(this, '<%= data[i].IdCategory %>');"></i>
+                                    <i class="fa fa-pencil-square-o" onclick="updatecategory(this, '<%= data[i].IdCategory %>');" aria-hidden="true"></i>
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
