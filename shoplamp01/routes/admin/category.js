@@ -30,12 +30,26 @@ var category = function(app, pool) {
                 connection.query('INSERT INTO category SET ?', objNew, function (error, results) {
                     connection.release();
                     if (error) throw error;
-                    else res.send(results.insertId);
+                    else {
+                        res.statusCode = 200;
+                        res.statusMessage = "Them moi thanh cong";
+                        res.redirect("/admin/category");
+                    }
                 });
             });
         } else {
             // cap nhat
-            res.send(req.body.id);
+            pool.getConnection(function(err, connection) {
+                connection.query('UPDATE category SET Name = ? , Depiction = ? , DateCreate = ? , Show = ? Where IdCategory = ?', [req.body.name, req.body.depiction, dNow.toLocaleString(), isShow, Number(req.body.id)], function (error, results) {
+                    connection.release();
+                    if (error) throw error;
+                    else {
+                        res.statusCode = 200;
+                        res.statusMessage = "Cap nhat thanh cong";
+                        res.redirect("/admin/category");
+                    }
+                });
+            });
         }
     });
     

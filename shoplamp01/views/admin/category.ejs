@@ -48,7 +48,11 @@
                                 <td><%= data[i].DateCreate %></td>
                                 <td><%= data[i].Depiction %></td>
                                 <td class="action">
-                                    <i class="fa fa-toggle-off" aria-hidden="true" onclick="showcategory(this, '<%= data[i].IdCategory %>');"></i>
+                                    <% if(data[i].Show == 1) { %>
+                                        <i class="fa fa-toggle-on" aria-hidden="true" onclick="showcategory(this, '<%= data[i].IdCategory %>');"></i>                                        
+                                    <% } else { %>
+                                        <i class="fa fa-toggle-off" aria-hidden="true" onclick="showcategory(this, '<%= data[i].IdCategory %>');"></i>
+                                    <% } %>
                                     <i class="fa fa-pencil-square-o" onclick="updatecategory(this, '<%= data[i].IdCategory %>');" aria-hidden="true"></i>
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </td>
