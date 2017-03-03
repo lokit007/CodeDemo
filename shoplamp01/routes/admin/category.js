@@ -31,8 +31,6 @@ var category = function(app, pool) {
                     connection.release();
                     if (error) throw error;
                     else {
-                        res.statusCode = 200;
-                        res.statusMessage = "Them moi thanh cong";
                         res.redirect("/admin/category");
                     }
                 });
@@ -40,19 +38,28 @@ var category = function(app, pool) {
         } else {
             // cap nhat
             pool.getConnection(function(err, connection) {
-                connection.query('UPDATE category SET Name = ? , Depiction = ? , DateCreate = ? , Show = ? Where IdCategory = ?', [req.body.name, req.body.depiction, dNow.toLocaleString(), isShow, Number(req.body.id)], function (error, results) {
+                connection.query('UPDATE category SET Name = ? , Depiction = ? , DateCreate = ? , ShowScreen = ? Where IdCategory = ?', [req.body.name, req.body.depiction, dNow.toLocaleString(), isShow, Number(req.body.id)], function (error, results) {
                     connection.release();
                     if (error) throw error;
                     else {
-                        res.statusCode = 200;
-                        res.statusMessage = "Cap nhat thanh cong";
                         res.redirect("/admin/category");
                     }
                 });
             });
         }
     });
-    
+    // ShowScreen
+    app.get('/admin/category/update/:id/:show', function(req, res){
+        pool.getConnection(function(err, connection) {
+            connection.query('UPDATE category SET ShowScreen = ? Where IdCategory = ?', [Number(req.params.show), Number(req.params.id)], function (error, results) {
+                connection.release();
+                if (error) throw error;
+                else {
+                    res.sendStatus(200);
+                }
+            });
+        });
+    });
 }
 
 module.exports = category;

@@ -47,10 +47,22 @@ function updatecategory(e, id) {
     $("#id").val(id);
 }
 // Click item Category is show/hide
-function showcategory(e, id) {
-    if($(e).hasClass('fa-toggle-off')) {
-        $(e).removeClass('fa-toggle-off').addClass('fa-toggle-on');
-    } else {
-        $(e).removeClass('fa-toggle-on').addClass('fa-toggle-off');
-    }
+function showcategory(e, idChange) {
+    var ishow = 0
+    if($(e).hasClass('fa-toggle-off')) ishow = 0;
+    else ishow = 1;
+    $.ajax({
+        url: "/admin/category/update/"+idChange+"/"+ishow,
+        type: "GET",
+        success: function(data){
+            if (data == "OK") {
+                if(ishow == 0) $(e).removeClass('fa-toggle-off').addClass('fa-toggle-on');
+                else $(e).removeClass('fa-toggle-on').addClass('fa-toggle-off');
+            }
+        },
+        error: function(){
+            alert("Không cập nhật được cơ sở dữ liệu!!!\nVui lòng thao tác lại sau.");
+        }
+    });
+
 }

@@ -48,7 +48,7 @@
                                 <td><%= data[i].DateCreate %></td>
                                 <td><%= data[i].Depiction %></td>
                                 <td class="action">
-                                    <% if(data[i].Show == 1) { %>
+                                    <% if(data[i].ShowScreen == 1) { %>
                                         <i class="fa fa-toggle-on" aria-hidden="true" onclick="showcategory(this, '<%= data[i].IdCategory %>');"></i>                                        
                                     <% } else { %>
                                         <i class="fa fa-toggle-off" aria-hidden="true" onclick="showcategory(this, '<%= data[i].IdCategory %>');"></i>
