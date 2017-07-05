@@ -1,0 +1,19 @@
+{
+	"vi": "Tiếng Việt",
+	"en": "Tiếng Anh",
+	"title": "Tiêu đề đây!",
+	"home": "Trang chủ",
+	"info": "Thông tin",
+	"contact": "Liên hệ",
+	"psearch": "Nhập dữ liệu tìm kiếm ...",
+	"bsearch": "Tìm",
+	"account": "Tài khoản",
+	"login": "Đăng nhập",
+	"logout": "Đăng xuất",
+	"wellcome": "Chào mừng bạn đến website NhanViet!",
+	"hello": "Xin chào!",
+	"%d member": {
+		"one": "%d thành viên",
+		"other": "%d thành viên"
+	}
+}

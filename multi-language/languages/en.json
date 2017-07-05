@@ -1,0 +1,19 @@
+{
+	"vi": "Vietnamese",
+	"en": "English",
+	"title": "Title here!",
+	"home": "Home",
+	"info": "Info",
+	"contact": "Contact",
+	"psearch": "Input find here ...",
+	"bsearch": "Find",
+	"account": "Account",
+	"login": "Login",
+	"logout": "Logout",
+	"wellcome": "Wellcome to website NhanViet!",
+	"hello": "Hello",
+	"%d member": {
+		"one": "%d member",
+		"other": "%d members"
+	}
+}
